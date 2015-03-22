@@ -1,0 +1,28 @@
+::res://::1427005428
+Plane.res::Mesh::1423984788::
+cone.gd::GDScript::1425994791::
+cone.scn::PackedScene::1423989956::scene_3d<>blender/cone.dae<>722b11dd0e946e1badf0c551bafee2eb<>1423987662
+cone_2.scn::PackedScene::1425922551::scene_3d<>blender/cone.dae<>722b11dd0e946e1badf0c551bafee2eb<>1423987662
+cube.gt::MeshLibrary::1426930180::
+cube.scn::PackedScene::1424161162::scene_3d<>blender/cube.dae<>5960770ec8898d90eee7fe2568609b59<>1420553059
+cube.tex::ImageTexture::1420552559::texture_3d<>blender/textures/cube.png<>1151d1872d1b656b7dac62eb83a40fbe<>1420550159
+icon.png::ImageTexture::1420550312::
+main.scn::PackedScene::1425994791::
+map_test.scn::PackedScene::1425994771::
+map_test_pathfinding.scn::PackedScene::1426930180::
+map_test_physics.scn::PackedScene::1426923778::
+new_boxshape.res::BoxShape::1423989171::
+new_boxshape.shp::BoxShape::1423989148::
+new_mesh.res::Mesh::1423985500::
+player.scn::PackedScene::1423987119::
+viewport_test.scn::PackedScene::1426094324::
+world.gd::GDScript::1425994834::
+world.scn::PackedScene::1425994834::scene_3d<>blender/world.dae<>dc6d52df76374ad8e7f27ed925a36c52<>1423984542
+::res://55::1423990250
+world.scn::PackedScene::1423990232::scene_3d<>blender/world.dae<>dc6d52df76374ad8e7f27ed925a36c52<>1423984542
+::res://Fall of Arcana (NEV)::1426093761
+Fall of Arcana (New Era Version) Looped.wav::Sample::1390026046::
+The Fall of Arcana (New Era Version).ogg::AudioStreamOGGVorbis::1426093768::
+::res://blender::1423987662
+::res://blender/textures::1420550159
+cube.png::ImageTexture::1420550159::

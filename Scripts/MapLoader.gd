@@ -35,7 +35,7 @@ func generate_map_xml(map):
 	file.open("res://Maps/test_xml.map")
 	while !file.read():
 		if(file.get_node_name().match("map") && file.has_attribute("world")):
-			print("-> ",file.get_attribute_value("world"))
+			print("-> ",file.get_named_attribute_value("world"))
 		elif(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT):
 			file.read()
 			file.read()
@@ -46,42 +46,91 @@ func generate_map_xml(map):
 			file.read()
 			file.read()
 			y_size=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			var item=file.get_node_data().to_int()
+			"""
+			for y in range(y_size+5,-5,-1):
+				for x in range(-5,x_size+5,1):
+					map.set_cell_item(x*grid,y*grid,0,2)
+			"""
+			for y in range(0,y_size):
+				for x in range(0,x_size):
+					map.set_cell_item(x*grid,y*grid,0,item)
 		elif(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT):
 			while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
 				while !(file.get_node_name().match("block")):
 					file.read()
+				print(file.get_node_name())
 				if(file.get_node_type() == file.NODE_ELEMENT):
-					var x
-					var y
-					var item
+					while !(file.get_node_name().match("ext")):
+						file.read()
+					var x = file.get_named_attribute_value("x").to_int()
+					var y = file.get_named_attribute_value("y").to_int()
 					file.read()
-					file.read()
-					file.read()
-					x=file.get_node_data().to_int()
-					file.read()
-					file.read()
-					file.read()
-					file.read()
-					y=file.get_node_data().to_int()
-					file.read()
-					file.read()
-					file.read()
-					file.read()
-					item=file.get_node_data().to_int()
-					map.set_cell_item(x*grid,y*grid,0,item)
-					print("MAP: ",x*grid,"|",y*grid,"|",item)
+					var ext = "res://Maps/" + file.get_node_data()
+					print(ext,"|",x,"|",y)
+					_parse_cave(ext,x,y,grid,map)
 				file.read()
 	
 	print("MAP-x_size: ",x_size)
 	print("MAP-y_size: ",y_size)
-	"""
-	for y in range(0,y_size):
-		for x in range(0,x_size):
-			var item = 0#file.get_line().to_int()
-			map.set_cell_item(x*grid,y*grid,0,item)
-			#print("MAP: ",x*grid,"|",y*grid,"|",item)
-	"""
 	return self._generate_navi(map,x_size,y_size)
+
+func _parse_cave(ext,x,y,grid,map):
+	var file = XMLParser.new()
+	var x_size = 1
+	var y_size = 1
+	var z_size = 1
+	var x_offset = x
+	var y_offset = y
+	file.open(ext)
+	while !file.read():
+		if(file.get_node_name().match("cave") && file.has_attribute("name")):
+				print("-> ",file.get_named_attribute_value("name"))
+		elif(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT):
+			file.read()
+			file.read()
+			file.read()
+			x_size=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			y_size=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			z_size=file.get_node_data().to_int()
+		elif(file.get_node_name().match("block") && file.get_node_type() == file.NODE_ELEMENT):
+			var x
+			var y
+			var z
+			var item
+			file.read()
+			file.read()
+			file.read()
+			x=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			y=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			z=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			item=file.get_node_data().to_int()
+			map.set_cell_item(x_offset+x*grid,y_offset+y*grid,0,item)
+			print("MAP: ",x*grid,"|",y*grid,"|",item)
 
 func generate_navi_mesh(Vector3arr):
 	var up = Vector3(0, 1, 0)

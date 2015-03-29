@@ -3,136 +3,14 @@
 	<size>
 		<int name="x_size">5</int>
 		<int name="y_size">5</int>
+		<int name="default">0</int>
 	</size>
 	<data>
 		<block>
-			<x>0</x>
-			<y>0</y>
-			<type>1</type>
+			<ext x="1" y="1">prefabs/test.cave</ext>
 		</block>
 		<block>
-			<x>1</x>
-			<y>0</y>
-			<type>1</type>
-		</block>
-		<block>
-			<x>2</x>
-			<y>0</y>
-			<type>1</type>
-		</block>
-		<block>
-			<x>3</x>
-			<y>0</y>
-			<type>1</type>
-		</block>
-		<block>
-			<x>4</x>
-			<y>0</y>
-			<type>1</type>
-		</block>
-
-		<block>
-			<x>0</x>
-			<y>1</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>1</x>
-			<y>1</y>
-			<type>-1</type>
-		</block>
-		<block>
-			<x>2</x>
-			<y>1</y>
-			<type>-1</type>
-		</block>
-		<block>
-			<x>3</x>
-			<y>1</y>
-			<type>-1</type>
-		</block>
-		<block>
-			<x>4</x>
-			<y>1</y>
-			<type>0</type>
-		</block>
-
-		<block>
-			<x>0</x>
-			<y>2</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>1</x>
-			<y>2</y>
-			<type>-1</type>
-		</block>
-		<block>
-			<x>2</x>
-			<y>2</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>3</x>
-			<y>2</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>4</x>
-			<y>2</y>
-			<type>0</type>
-		</block>
-
-		<block>
-			<x>0</x>
-			<y>3</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>1</x>
-			<y>3</y>
-			<type>-1</type>
-		</block>
-		<block>
-			<x>2</x>
-			<y>3</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>3</x>
-			<y>3</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>4</x>
-			<y>3</y>
-			<type>0</type>
-		</block>
-
-		<block>
-			<x>0</x>
-			<y>4</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>1</x>
-			<y>4</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>2</x>
-			<y>4</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>3</x>
-			<y>4</y>
-			<type>0</type>
-		</block>
-		<block>
-			<x>4</x>
-			<y>4</y>
-			<type>0</type>
+			<ext x="2" y="1">prefabs/test.cave</ext>
 		</block>
 	</data>
 </map>

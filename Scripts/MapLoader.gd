@@ -7,7 +7,7 @@ func setMaterial(mat):
 	self.material = mat
 
 func generate_map(map):
-	var grid = 1
+	var grid = map.get_cell_size()
 	var file = File.new()
 	file.open("res://Maps/test.map", File.READ)
 	print("FILE-len: ",file.get_len())
@@ -24,6 +24,63 @@ func generate_map(map):
 			map.set_cell_item(x*grid,y*grid,0,item)
 			print("MAP: ",x*grid,"|",y*grid,"|",item)
 			pass
+	return self._generate_navi(map,x_size,y_size)
+
+func generate_map_xml(map):
+	var grid = map.get_cell_size()
+	var x_size = 0
+	var y_size = 0
+	
+	var file = XMLParser.new()
+	file.open("res://Maps/test_xml.map")
+	while !file.read():
+		if(file.get_node_name().match("map") && file.has_attribute("world")):
+			print("-> ",file.get_attribute_value("world"))
+		elif(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT):
+			file.read()
+			file.read()
+			file.read()
+			x_size=file.get_node_data().to_int()
+			file.read()
+			file.read()
+			file.read()
+			file.read()
+			y_size=file.get_node_data().to_int()
+		elif(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT):
+			while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
+				while !(file.get_node_name().match("block")):
+					file.read()
+				if(file.get_node_type() == file.NODE_ELEMENT):
+					var x
+					var y
+					var item
+					file.read()
+					file.read()
+					file.read()
+					x=file.get_node_data().to_int()
+					file.read()
+					file.read()
+					file.read()
+					file.read()
+					y=file.get_node_data().to_int()
+					file.read()
+					file.read()
+					file.read()
+					file.read()
+					item=file.get_node_data().to_int()
+					map.set_cell_item(x*grid,y*grid,0,item)
+					print("MAP: ",x*grid,"|",y*grid,"|",item)
+				file.read()
+	
+	print("MAP-x_size: ",x_size)
+	print("MAP-y_size: ",y_size)
+	"""
+	for y in range(0,y_size):
+		for x in range(0,x_size):
+			var item = 0#file.get_line().to_int()
+			map.set_cell_item(x*grid,y*grid,0,item)
+			#print("MAP: ",x*grid,"|",y*grid,"|",item)
+	"""
 	return self._generate_navi(map,x_size,y_size)
 
 func generate_navi_mesh(Vector3arr):

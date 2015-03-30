@@ -51,14 +51,10 @@ func generate_map_xml(map):
 			file.read()
 			file.read()
 			var item=file.get_node_data().to_int()
-			"""
-			for y in range(y_size+5,-5,-1):
-				for x in range(-5,x_size+5,1):
-					map.set_cell_item(x*grid,y*grid,0,2)
-			"""
 			for y in range(0,y_size):
 				for x in range(0,x_size):
-					map.set_cell_item(x*grid,y*grid,0,item)
+					for z in range(0,2):
+						map.set_cell_item(x*grid,y*grid,z,item)
 		elif(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT):
 			while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
 				while !(file.get_node_name().match("block")):
@@ -77,7 +73,7 @@ func generate_map_xml(map):
 	
 	print("MAP-x_size: ",x_size)
 	print("MAP-y_size: ",y_size)
-	return self._generate_navi(map,x_size,y_size)
+	return self._generate_navi_3D(map,x_size,y_size,0)
 
 func _parse_cave(ext,x,y,grid,map):
 	var file = XMLParser.new()
@@ -129,7 +125,7 @@ func _parse_cave(ext,x,y,grid,map):
 			file.read()
 			file.read()
 			item=file.get_node_data().to_int()
-			map.set_cell_item(x_offset+x*grid,y_offset+y*grid,0,item)
+			map.set_cell_item(x_offset+x*grid,y_offset+y*grid,z*grid,item)
 			print("MAP: ",x*grid,"|",y*grid,"|",item)
 
 func generate_navi_mesh(Vector3arr):
@@ -210,5 +206,38 @@ func _generate_navi(gridMap,x_size,y_size):
 						navi.push_back(Vector3(x*cell_size+cell_size, (y-1)*cell_size, hover))
 						navi.push_back(Vector3(x*cell_size, (y-1)*cell_size, hover))
 						navi.push_back(Vector3(x*cell_size, (y-1)*cell_size+cell_size, hover))
-			pass
 	return navi
+
+func _generate_navi_3D(gridMap,x_size,y_size,z_size):
+	var cell_size = gridMap.get_cell_size()
+	var navi = Vector3Array()
+	for x in range(0,x_size):
+		for y in range(0,y_size):
+			for z in range(z_size,2):
+				if(gridMap.get_cell_item(x,y,z) == -1):
+					if(_is_schacht(gridMap,x,y,z)):
+						navi.push_back(Vector3(x*cell_size, y*cell_size+cell_size, z*cell_size))
+						navi.push_back(Vector3(x*cell_size+cell_size, y*cell_size+cell_size, z*cell_size))
+						navi.push_back(Vector3(x*cell_size+cell_size, y*cell_size, z*cell_size))
+						
+						navi.push_back(Vector3(x*cell_size+cell_size, y*cell_size, z*cell_size))
+						navi.push_back(Vector3(x*cell_size, y*cell_size, z))
+						navi.push_back(Vector3(x*cell_size, y*cell_size+cell_size, z*cell_size))
+				pass
+	return navi
+
+func _is_schacht(gridMap,x,y,z):
+	var con_1 = (gridMap.get_cell_item(x,y,z) == -1)
+	var con_2 = (gridMap.get_cell_item(x-1,y,z) == -1 || gridMap.get_cell_item(x+1,y,z) == -1)
+	var con_3 = (gridMap.get_cell_item(x,y-1,z) == -1 || gridMap.get_cell_item(x,y+1,z) == -1)
+	var con_4 = (gridMap.get_cell_item(x-1,y-1,z) == -1 || gridMap.get_cell_item(x+1,y+1,z) == -1 || gridMap.get_cell_item(x+1,y-1,z) == -1 || gridMap.get_cell_item(x-1,y+1,z) == -1)
+	return con_1 && con_2 && con_3 && con_4
+	pass
+
+
+
+
+
+
+
+

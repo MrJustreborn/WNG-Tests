@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cave name="Gang">
 	<size>
-		<int name="x_size">2</int>
-		<int name="y_size">2</int>
-		<int name="z_size">2</int>
+		<int name="x_size">0</int>
+		<int name="y_size">0</int>
+		<int name="z_size">0</int>
 	</size>
 	<data>
 		<block>

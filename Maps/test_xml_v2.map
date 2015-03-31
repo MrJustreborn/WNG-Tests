@@ -10,7 +10,13 @@
 			<ext x="1" y="1">prefabs/test.cave</ext>
 		</block>
 		<block>
-			<ext x="3" y="1">prefabs/test.cave</ext>
+			<ext x="2" y="1">prefabs/test.cave</ext>
+		</block>
+		<block>
+			<ext x="2" y="2">prefabs/test.cave</ext>
+		</block>
+		<block>
+			<ext x="1" y="2">prefabs/test.cave</ext>
 		</block>
 	</data>
 </map>

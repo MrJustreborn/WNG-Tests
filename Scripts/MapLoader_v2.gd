@@ -37,11 +37,28 @@ func loadMap(path):
 		return ERR_PATH_NOT_VALID
 	var file = XMLParser.new()
 	file.open(path)
-	
-	pass
+	while !file.read():
+		if(file.get_node_name().match("map") && file.get_node_type() == file.NODE_ELEMENT):
+			self._parseMap(file)
 
-func _parse_XYZ():
-	pass
+#	Hilfsfunktionen
+func _parseMap(file):
+	while !(file.get_node_name().match("map") && file.get_node_type() == file.NODE_ELEMENT_END):
+		if(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT):
+			self._parseMapSize(file)
+		if(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT):
+			self._parseMapData(file)
+		file.read()
+
+func _parseMapSize(file):
+	while !(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT_END):
+		#parse...
+		file.read()
+
+func _parseMapData(file):
+	while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
+		#parse...
+		file.read()
 
 #****************************************
 #	getTest	1

@@ -15,6 +15,9 @@ var map = null			#GridMap
 var navi = null			#Vector3Array
 var naviMesh = null		#SurfaceTool -> Mesh
 
+var x_size = 0
+var y_size = 0
+
 var navMeshInst = null	#NavigationMeshInstance
 var meshInst = null		#MeshInstance
 
@@ -43,22 +46,36 @@ func loadMap(path):
 
 #	Hilfsfunktionen
 func _parseMap(file):
+	print("parseMap")
 	while !(file.get_node_name().match("map") && file.get_node_type() == file.NODE_ELEMENT_END):
 		if(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT):
 			self._parseMapSize(file)
 		if(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT):
 			self._parseMapData(file)
-		file.read()
+		if(file.read()):
+			return #ERR_PARSE
 
 func _parseMapSize(file):
+	print("parseMapSize")
 	while !(file.get_node_name().match("size") && file.get_node_type() == file.NODE_ELEMENT_END):
-		#parse...
-		file.read()
+		if(file.get_node_name().match("int") && file.get_node_type() == file.NODE_ELEMENT):
+			if(file.get_named_attribute_value("name").match("x_size")):
+				while !file.get_node_data():
+					file.read()
+				x_size = file.get_node_data().to_int()
+			if(file.get_named_attribute_value("name").match("y_size")):
+				while !file.get_node_data():
+					file.read()
+				y_size = file.get_node_data().to_int()
+		if(file.read()):
+			return #ERR_PARSE
 
 func _parseMapData(file):
+	print("parseMapData")
 	while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
 		#parse...
-		file.read()
+		if(file.read()):
+			return #ERR_PARSE
 
 #****************************************
 #	getTest	1

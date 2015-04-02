@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cave name="Gang">
+	<size>
+		<int name="x_size">1</int>
+		<int name="y_size">1</int>
+		<int name="z_size">1</int>
+	</size>
+	<data>
+		<block>
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>1</x>
+			<y>1</y>
+			<z>0</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>1</x>
+			<y>0</y>
+			<z>1</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>0</x>
+			<y>1</y>
+			<z>1</z>
+			<type>-1</type>
+		</block>
+		<block>
+			<x>1</x>
+			<y>1</y>
+			<z>1</z>
+			<type>-1</type>
+		</block>
+	</data>
+</cave>

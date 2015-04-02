@@ -3,20 +3,20 @@
 	<size>
 		<int name="x_size">10</int>
 		<int name="y_size">10</int>
-		<int name="default">0</int>
+		<int name="default">1</int>
 	</size>
 	<data>
 		<block>
-			<ext x="1" y="1">prefabs/test.cave</ext>
+			<ext x="1" y="-1">prefabs/test.cave</ext>
 		</block>
 		<block>
-			<ext x="2" y="1">prefabs/test.cave</ext>
+			<ext x="2" y="-1">prefabs/test.cave</ext>
 		</block>
 		<block>
-			<ext x="2" y="2">prefabs/test.cave</ext>
+			<ext x="1" y="-5">prefabs/test.cave</ext>
 		</block>
 		<block>
-			<ext x="1" y="2">prefabs/test.cave</ext>
+			<ext x="3" y="-5">prefabs/test.cave</ext>
 		</block>
 	</data>
 </map>

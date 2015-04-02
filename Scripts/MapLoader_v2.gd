@@ -61,21 +61,85 @@ func _parseMapSize(file):
 		if(file.get_node_name().match("int") && file.get_node_type() == file.NODE_ELEMENT):
 			if(file.get_named_attribute_value("name").match("x_size")):
 				while !file.get_node_data():
-					file.read()
+					if(file.read()):
+						return #ERR_PARSE
 				x_size = file.get_node_data().to_int()
 			if(file.get_named_attribute_value("name").match("y_size")):
 				while !file.get_node_data():
-					file.read()
-				y_size = file.get_node_data().to_int()
+					if(file.read()):
+						return #ERR_PARSE
+				y_size = file.get_node_data().to_int() *-1
+			if(file.get_named_attribute_value("name").match("default")):
+				while !file.get_node_data():
+					if(file.read()):
+						return #ERR_PARSE
+				self._initMap(0,0,x_size,y_size,file.get_node_data().to_int())
 		if(file.read()):
 			return #ERR_PARSE
 
 func _parseMapData(file):
 	print("parseMapData")
 	while !(file.get_node_name().match("data") && file.get_node_type() == file.NODE_ELEMENT_END):
-		#parse...
+		while !(file.get_node_name().match("block") && file.get_node_type() == file.NODE_ELEMENT_END):
+			if(file.get_node_name().match("ext") && file.get_node_type() == file.NODE_ELEMENT):
+				self._parseMapDataExt(file)
+			if(file.read()):
+				return #ERR_PARSE
 		if(file.read()):
 			return #ERR_PARSE
+
+func _parseMapDataExt(file):
+	print("parseMapDataExt")
+	while !(file.get_node_name().match("ext") && file.get_node_type() == file.NODE_ELEMENT_END):
+		if(file.get_node_name().match("ext") && file.get_node_type() == file.NODE_ELEMENT):
+			var x = file.get_named_attribute_value("x").to_int()
+			var y = file.get_named_attribute_value("y").to_int()
+			while !file.get_node_data():
+				if(file.read()):
+					return #ERR_PARSE
+			self._parseCave(x,y,file.get_node_data())
+		if(file.read()):
+			return #ERR_PARSE
+
+func _parseCave(x_off,y_off,path):
+	var data = {}
+	var len = 8
+	print("parseCave","|",x_off,"|",y_off,"|",path)
+	data["offset"]=[x_off,y_off,len]
+	data[0]=[0,0,0,-1]
+	data[1]=[1,0,0,-1]
+	data[2]=[0,-1,0,-1]
+	data[3]=[1,-1,0,-1]
+	data[4]=[0,0,1,-1]
+	data[5]=[1,0,1,-1]
+	data[6]=[0,-1,1,-1]
+	data[7]=[1,-1,1,-1]
+	print(data)
+	self._addToMap(x_off,y_off,data)
+	
+	"""
+	map.set_cell_item(1,-1,0,-1)
+	map.set_cell_item(1,-2,0,-1)
+	map.set_cell_item(2,-1,0,-1)
+	map.set_cell_item(2,-2,0,-1)
+	
+	map.set_cell_item(1,-1,1,-1)
+	map.set_cell_item(1,-2,1,-1)
+	map.set_cell_item(2,-1,1,-1)
+	map.set_cell_item(2,-2,1,-1)
+	"""
+
+#	Zuweisung der Map
+func _initMap(x,y,w,h,type):
+	print("initMap: ",x,"|",y,"|",w,"|",h,"|",type)
+	for i in range(x,w):
+		for j in range(h,y):
+			for z in range(-20,2):
+				map.set_cell_item(i,j,z,type)
+
+func _addToMap(x,y,data):
+	for i in range(data["offset"][2]):
+			map.set_cell_item(x+data[i][0],y+data[i][1],data[i][2],data[i][3])
 
 #****************************************
 #	getTest	1

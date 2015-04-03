@@ -8,7 +8,9 @@ var v = Vector2Array()
 var v2 = Vector2Array()
 var cur=0
 var last=0
-export(ImageTexture) var tex
+var tex
+var tex_front
+var tex_back
 
 func _process(delta):
 	get_node("ProgressBar").set_val(get_node("ProgressBar").get_val()+0.1)
@@ -39,10 +41,10 @@ func _draw():
 	#draw_circle(Vector2(get_size().width/2,get_size().height/2),get_node("ProgressBar").get_val()/100*get_size().width/2,Color(0, 1, 0, 0.5))
 	#draw_rect(Rect2(-get_global_pos().x,-get_global_pos().y,800,600),Color(1,0,0.5))
 	#draw_texture_rect(tex,Rect2(-get_global_pos().x,-get_global_pos().y,800,600),false)
-	draw_rect(Rect2(-get_global_pos().x,-get_global_pos().y,get_window().get_size().width,get_window().get_size().height),Color(1,0,0))
-	#draw_texture(tex,Vector2(0,0))
-
-	draw_colored_polygon(v,Color(1, 1, 1, 0.5),v2,tex)
+	draw_rect(Rect2(-get_global_pos().x,-get_global_pos().y,get_window().get_size().width,get_window().get_size().height),Color(0,0,0))
+	draw_texture(tex_back,Vector2(0,0))
+	draw_colored_polygon(v,Color(1, 1, 1, 0.99),v2,tex)
+	draw_texture(tex_front,Vector2(get_size().width/2-256,get_size().height/2-256))
 
 func _ready():
 	# Initialization here
@@ -51,11 +53,15 @@ func _ready():
 	v.push_back(Vector2(get_size().width/2,51))
 	
 	v2.push_back(Vector2(0.5,0.5))
-	v2.push_back(Vector2(0,1))
+	v2.push_back(Vector2(0.5,0))
 	
 	
 	tex = ImageTexture.new()
 	tex.load("loading.png")
+	tex_front = ImageTexture.new()
+	tex_front.load("loading_front.png")
+	tex_back = ImageTexture.new()
+	tex_back.load("loading_back.png")
 	pass
 
 

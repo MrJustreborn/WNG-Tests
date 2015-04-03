@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="2" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<resource type="GDScript" path="local://1">
-		<string name="script/source"> "&#000a;extends Control&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;var v = Vector2Array()&#000a;var cur=0&#000a;var last=0&#000a;&#000a;func _process(delta):&#000a;&#0009;get_node(&quot;ProgressBar&quot;).set_val(get_node(&quot;ProgressBar&quot;).get_val()+0.1)&#000a;&#0009;var cur = floor(get_node(&quot;ProgressBar&quot;).get_val())&#000a;&#0009;if(cur != last):&#000a;&#0009;&#0009;last=cur&#000a;&#0009;&#0009;var len = get_size().height/2-50&#000a;&#0009;&#0009;var oval = 100&#000a;&#0009;&#0009;var alpha = (((-PI*2)/100*cur)+PI)&#000a;&#0009;&#0009;if(cur &lt; 0 &amp;&amp; cur &gt; 25):&#000a;&#0009;&#0009;&#0009;len = len - oval*(cur/100)&#000a;&#0009;&#0009;if(cur &lt; 49 &amp;&amp; cur &gt; 75):&#000a;&#0009;&#0009;&#0009;len = len - oval*((cur-50)/100)&#000a;&#0009;&#0009;if(cur &lt;24 &amp;&amp; cur &gt; 50):&#000a;&#0009;&#0009;&#0009;len = len - oval/4 + oval*((cur-25)/100)&#000a;&#0009;&#0009;if(cur &lt; 74 &amp;&amp; cur &gt; 100):&#000a;&#0009;&#0009;&#0009;len = len - oval/4 + oval*((cur-75)/100)&#000a;&#0009;&#0009;var x = (sin(alpha) * len) + get_size().width/2&#000a;&#0009;&#0009;var y = (cos(alpha) * len) + get_size().height/2&#000a;&#0009;&#0009;v.push_back(Vector2(x,y))&#000a;&#0009;&#0009;print(alpha)&#000a;&#0009;update()&#000a;&#000a;func _draw():&#000a;&#0009;#draw_circle(Vector2(get_size().width/2,get_size().height/2),get_node(&quot;ProgressBar&quot;).get_val()/100*get_size().width/2,Color(0, 1, 0, 0.5))&#000a;&#0009;draw_colored_polygon(v,Color(0.3, 0.5, 0.5, 0.5))&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;set_process(true)&#000a;&#0009;v.push_back(Vector2(get_size().width/2,get_size().height/2))&#000a;&#0009;v.push_back(Vector2(get_size().width/2,51))&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
-
-	</resource>
+	<ext_resource path="res://Scripts/load_screen.gd" type="Script"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="39">
+			<string_array  len="35">
 				<string> "Control" </string>
 				<string> "_import_path" </string>
 				<string> "visibility/visible" </string>
@@ -25,14 +22,16 @@
 				<string> "size_flags/horizontal" </string>
 				<string> "size_flags/vertical" </string>
 				<string> "size_flags/stretch_ratio" </string>
-				<string> "script/script" </string>
 				<string> "__meta__" </string>
-				<string> "ProgressBar" </string>
+				<string> "anchor/left" </string>
 				<string> "anchor/top" </string>
 				<string> "margin/left" </string>
 				<string> "margin/top" </string>
 				<string> "margin/right" </string>
 				<string> "margin/bottom" </string>
+				<string> "script/script" </string>
+				<string> "tex" </string>
+				<string> "ProgressBar" </string>
 				<string> "range/min" </string>
 				<string> "range/max" </string>
 				<string> "range/step" </string>
@@ -41,12 +40,6 @@
 				<string> "range/exp_edit" </string>
 				<string> "rounded_values" </string>
 				<string> "percent/visible" </string>
-				<string> "Node2D" </string>
-				<string> "transform/pos" </string>
-				<string> "transform/rot" </string>
-				<string> "transform/scale" </string>
-				<string> "z/z" </string>
-				<string> "z/relative" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
@@ -55,14 +48,13 @@
 			<string> "node_count" </string>
 			<int> 3 </int>
 			<string> "variants" </string>
-			<array  len="15" shared="false">
+			<array  len="18" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
 				<int> 1 </int>
 				<bool> False </bool>
 				<int> 2 </int>
-				<resource  resource_type="Script" path="local://1">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
@@ -72,7 +64,7 @@
 							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="1" shared="false">
-								<node_path> "/root/EditorNode/@Panel3/@VBoxContainer6/@HSplitContainer8/@VSplitContainer9/@VSplitContainer10/@VBoxContainer11/@Panel16/@Control18/@CanvasItemEditor5886/@VSplitContainer5811/@HSplitContainer5812/@Control5813/@Control5814/@Viewport5815/Control" </node_path>
+								<string> "res://Scripts/load_screen.gd" </string>
 							</array>
 						</dictionary>
 						<string> "2D" </string>
@@ -82,7 +74,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 0.9025 </real>
+							<real> 0.735092 </real>
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
 							<string> "snap_relative" </string>
@@ -96,7 +88,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -476.602, -221.912 </vector2>
+							<vector2> -714.068, -133.14 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -203,16 +195,20 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
+				<int> 3 </int>
+				<real> 400 </real>
+				<real> 300 </real>
+				<real> -400 </real>
+				<real> -300 </real>
+				<resource  resource_type="Script" path="res://Scripts/load_screen.gd">  </resource>
+				<nil>  </nil>
 				<real> 50 </real>
 				<real> 30 </real>
 				<real> 0 </real>
 				<real> 100 </real>
-				<vector2> 393.898, 267.504 </vector2>
-				<vector2> 12.0628, 8.07833 </vector2>
-				<int> 0 </int>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="133"> 				-1, -1, 0, 0, -1, 18, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 3, 7, 3, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 15, 5, 16, 2, 17, 6, 18, 7, 0, 0, 0, 19, 19, -1, 28, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 20, 3, 6, 3, 7, 3, 21, 8, 22, 8, 23, 8, 24, 9, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 16, 2, 25, 10, 26, 11, 27, 2, 28, 10, 29, 2, 30, 4, 31, 4, 32, 1, 0, 0, 0, 33, 33, -1, 10, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 34, 12, 35, 10, 36, 13, 37, 14, 38, 1, 0 </int_array>
+			<int_array  len="159"> 				-1, -1, 0, 0, -1, 17, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 3, 7, 3, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 15, 5, 16, 2, 17, 6, 0, 0, 0, 0, 0, -1, 24, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 18, 7, 19, 7, 6, 7, 7, 7, 20, 8, 21, 9, 22, 10, 23, 11, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 15, 5, 16, 2, 24, 12, 25, 13, 0, 1, 0, 26, 26, -1, 28, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 19, 3, 6, 3, 7, 3, 20, 14, 21, 14, 22, 14, 23, 15, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 16, 2, 27, 16, 28, 17, 29, 2, 30, 16, 31, 2, 32, 4, 33, 4, 34, 1, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

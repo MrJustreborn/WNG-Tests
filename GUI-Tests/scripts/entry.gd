@@ -35,22 +35,29 @@ func setIcon(path):
 	icon.get_texture().set_size_override(Vector2(64,64))
 
 func _button():
-	button.set_text("Läd ...")
+	button.set_text("Läd ·..")
 	button.set_disabled(true)
 	set_process(true)
 
 func _process(delta):
-	progress.show()
+	var p = str(" ",floor(progress.get_val()),"%")
+	#progress.show()
 	progress.set_val(progress.get_val()+0.1)
 	if(progress.get_val() == 100):
 		set_process(false)
 		checkButton.set_disabled(false)
 		checkButton.set_pressed(true)
-	if(1==0):
-		if(button.get_text().match("Läd ...")):
-			button.set_text("Läd *..")
-		elif(button.get_text().match("Läd *..")):
-			button.set_text("Läd .*.")
-		elif(button.get_text().match("Läd .*.")):
-			button.set_text("Läd ..*")
+		button.set_text("Remove")
+		button.set_disabled(false)
+		progress.hide()
+		progress.set_val(0)
+	if(OS.get_frames_drawn()%10==0):
+		if(button.get_text().begins_with("Läd ...")):
+			button.set_text("Läd ·.."+p)
+		elif(button.get_text().begins_with("Läd ·..")):
+			button.set_text("Läd .·."+p)
+		elif(button.get_text().begins_with("Läd .·.")):
+			button.set_text("Läd ..·"+p)
+		elif(button.get_text().begins_with("Läd ..·")):
+			button.set_text("Läd ..."+p)
 

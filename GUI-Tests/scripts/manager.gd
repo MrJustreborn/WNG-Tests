@@ -15,7 +15,7 @@ func _ready():
 	for i in range(11):
 		var e1 = entry.instance()
 		community.add_child(e1)
-		#e1.call("setIcon","loading_back.png")
+		e1.call("setIcon","loading.png")
 	pass
 
 

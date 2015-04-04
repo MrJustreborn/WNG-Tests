@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://GUI-Tests/scripts/manager.gd" type="Script"></ext_resource>
 	<ext_resource path="res://icon.png" type="Texture"></ext_resource>
 	<ext_resource path="res://GUI-Tests/symbols/warning.png" type="Texture"></ext_resource>
-	<ext_resource path="res://GUI-Tests/scripts/manager.gd" type="Script"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
@@ -96,11 +96,12 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 1 </int>
+							<int> 2 </int>
 							<string> "sources" </string>
-							<array  len="2" shared="false">
+							<array  len="3" shared="false">
 								<string> "res://GUI-Tests/scripts/entry.gd" </string>
 								<string> "res://GUI-Tests/scripts/manager.gd" </string>
+								<string> "res://GUI-Tests/scripts/plugin_controller.gd" </string>
 							</array>
 						</dictionary>
 						<string> "2D" </string>

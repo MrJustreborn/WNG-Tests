@@ -16,7 +16,7 @@ func _ready():
 	titel = get_node("HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/Titel")
 	desc = get_node("HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/Desc")
 	icon = get_node("HBoxContainer/VBoxContainer/HBoxContainer/Icon")
-	progress = get_node("HBoxContainer/VBoxContainer/ProgressBar")
+	progress = get_node("HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/ProgressBar")
 	button = get_node("HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/Button")
 	checkButton = get_node("HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CheckButton")
 	

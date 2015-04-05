@@ -6,9 +6,9 @@ func _init():
 func _t(u):
 	var err=0
 	var http = HTTPClient.new()
-	var err = http.connect("api.twitch.tv",443)
+	var err = http.connect("api.twitch.tv",443,true,true)
 	print(err)
-
+	
 	while(http.get_status()==HTTPClient.STATUS_CONNECTING
 	or http.get_status()==HTTPClient.STATUS_RESOLVING):
 		http.poll()
@@ -35,5 +35,19 @@ func _t(u):
 	print("status: ",http.get_status())
 	print("code: ",http.get_response_code())
 	print(http.get_response_headers_as_dictionary())
+	
+	var rb = RawArray()
+	while(http.get_status()==http.STATUS_BODY):
+		http.poll()
+		var chunk = http.read_response_body_chunk()
+		if (chunk.size()==0):
+			OS.delay_usec(1000)
+		else:
+			rb = rb + chunk
+	
+	var j = {}
+	j.parse_json(rb.get_string_from_utf8())
+	print(j)
+	
 	
 	http.close()

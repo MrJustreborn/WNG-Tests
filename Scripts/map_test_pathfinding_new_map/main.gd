@@ -104,13 +104,18 @@ func _input(ev):
 
 		_update_path()
 		
+var t
+var MapLoader_class = load("res://Scripts/MapLoader.gd")
+var mapLoader = MapLoader_class.new()
 
 func _ready():
 	# Initalization here
-	var MapLoader_class = load("res://Scripts/MapLoader.gd")
-	var mapLoader = MapLoader_class.new()
-	mapLoader.setMaterial(material)
+	t = Thread.new()
+	t.start(self,"_t")
+	set_process_input(true)
+func _t(u):
 	
+	mapLoader.setMaterial(material)
 	map = get_node("GridMap")
 	var navi = mapLoader.generate_map_xml(map)
 	
@@ -140,7 +145,6 @@ func _ready():
 	im = ImmediateGeometry.new()
 	nav.add_child(im)
 	
-	set_fixed_process(true)
 	set_process_input(true)
 	
 	var MapLoader_v2_class = load("res://Scripts/MapLoader_v2.gd")
@@ -149,7 +153,7 @@ func _ready():
 	mapLoader_v2.setMap(map)
 	print(mapLoader_v2.loadMap("res://Maps/test_xml_v2.map"))
 	#AddonTest()
-	pass
+	print("finished")
 
 #****************************************
 #	Addon-Test um ein pck zu validieren

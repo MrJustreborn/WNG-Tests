@@ -91,8 +91,8 @@ func _input(ev):
 
 	if (ev.type==InputEvent.MOUSE_BUTTON and ev.button_index==BUTTON_LEFT and ev.pressed):
                 
-		var from = get_node("DirectionalLight/Camera").project_ray_origin(ev.pos)
-		var to = from+get_node("DirectionalLight/Camera").project_ray_normal(ev.pos)*100
+		var from = get_node("Camera").project_ray_origin(ev.pos)
+		var to = from+get_node("Camera").project_ray_normal(ev.pos)*100
 		var p = nav.get_closest_point_to_segment(from,to)
 		#print("FROM: ",from)
 		#print("TO: ",to)
@@ -101,24 +101,24 @@ func _input(ev):
 		begin=nav.get_closest_point(get_node("Position3D").get_translation())
 		end=p
 		#print("BEGIN: ",begin)
-
 		_update_path()
-		
+
 var t
 var MapLoader_class = load("res://Scripts/MapLoader.gd")
 var mapLoader = MapLoader_class.new()
-
 func _ready():
 	# Initalization here
 	t = Thread.new()
 	t.start(self,"_t")
 	set_process_input(true)
+	t.wait_to_finish()
+	get_node("GridMap").set_bake(true)
+	#get_node("GridMap").bake_geometry()
+
 func _t(u):
-	
 	mapLoader.setMaterial(material)
 	map = get_node("GridMap")
 	var navi = mapLoader.generate_map_xml(map)
-	
 	var p = navi
 	var mesh = mapLoader.generate_navi_mesh(p)
 	
@@ -153,7 +153,6 @@ func _t(u):
 	mapLoader_v2.setMap(map)
 	print(mapLoader_v2.loadMap("res://Maps/test_xml_v2.map"))
 	#AddonTest()
-	print("finished")
 
 #****************************************
 #	Addon-Test um ein pck zu validieren

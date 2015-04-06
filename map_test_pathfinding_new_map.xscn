@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="8" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://Scripts/map_test_pathfinding_new_map/main.gd" type="Script"></ext_resource>
-	<ext_resource path="res://new_mesh.res" type="Mesh"></ext_resource>
 	<ext_resource path="res://Map-Cubes.gt" type="MeshLibrary"></ext_resource>
+	<ext_resource path="res://icon.png" type="Texture"></ext_resource>
+	<ext_resource path="res://new_mesh.res" type="Mesh"></ext_resource>
 	<ext_resource path="res://cone_2.scn" type="PackedScene"></ext_resource>
 	<resource type="FixedMaterial" path="local://1">
 		<bool name="flags/visible"> True </bool>
@@ -46,13 +47,21 @@
 
 	</resource>
 	<resource type="GDScript" path="local://3">
+		<string name="script/source"> "&#000a;extends Sprite&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;func _process(delta):&#000a;&#0009;var screen_coord = get_owner().get_node(&quot;Camera&quot;).unproject_position(get_parent().get_translation())&#000a;&#0009;var dist = (get_owner().get_node(&quot;Camera&quot;).get_translation() - get_parent().get_translation()).z&#000a;&#0009;set_pos(screen_coord)&#000a;&#0009;if(dist &gt;=30):&#000a;&#0009;&#0009;if(get_opacity() &lt; 0):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()-0.01)&#000a;&#0009;else:&#000a;&#0009;&#0009;if(get_opacity() &gt; 1):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()+0.01)&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;set_process(true)&#000a;&#0009;set_scale(Vector2(0.25,0.25))&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
+
+	</resource>
+	<resource type="GDScript" path="local://4">
 		<string name="script/source"> "&#000a;extends Spatial&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;var t&#000a;&#000a;func _process(delta):&#000a;&#0009;t = get_parent().get_node(&quot;Position3D&quot;).get_translation()&#000a;&#0009;set_translation(t)&#000a;&#000a;func _ready():&#000a;&#0009;set_process(true)&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
+
+	</resource>
+	<resource type="GDScript" path="local://5">
+		<string name="script/source"> "&#000a;extends Camera&#000a;&#000a;func _ready():&#000a;&#0009;# Initalization here&#000a;&#0009;set_process(true)&#000a;&#0009;set_process_input(true)&#000a;&#000a;&#000a;func _process(delta):&#000a;&#0009;var speed = 4&#000a;&#0009;delta = speed * delta&#000a;&#0009;var pos = get_translation()&#000a;&#0009;if (Input.is_key_pressed(KEY_RIGHT)):&#000a;&#0009;&#0009;pos = pos + Vector3(1,0,0) * delta;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#0009;elif (Input.is_key_pressed(KEY_LEFT)):&#000a;&#0009;&#0009;pos = pos + Vector3(-1,0,0) * delta;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#0009;&#000a;&#0009;if (Input.is_key_pressed(KEY_UP)):&#000a;&#0009;&#0009;pos = pos + Vector3(0,1,0) * delta;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#0009;elif (Input.is_key_pressed(KEY_DOWN)):&#000a;&#0009;&#0009;pos = pos + Vector3(0,-1,0) * delta;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#000a;func _input(event):&#000a;&#0009;var pos = get_translation()&#000a;&#0009;if (Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN)):&#000a;&#0009;&#0009;pos = pos + Vector3(0,0,9) * 0.02;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#0009;elif (Input.is_mouse_button_pressed(BUTTON_WHEEL_UP)):&#000a;&#0009;&#0009;pos = pos + Vector3(0,0,-9) * 0.02;&#000a;&#0009;&#0009;set_translation(pos)&#000a;&#000a;&#000a;" </string>
 
 	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="75">
+			<string_array  len="95">
 				<string> "Spatial" </string>
 				<string> "_import_path" </string>
 				<string> "_import_transform" </string>
@@ -60,17 +69,6 @@
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
 				<string> "material" </string>
-				<string> "GridMap" </string>
-				<string> "theme/theme" </string>
-				<string> "theme/bake" </string>
-				<string> "lighting/bake" </string>
-				<string> "cell/size" </string>
-				<string> "cell/octant_size" </string>
-				<string> "cell/center_x" </string>
-				<string> "cell/center_y" </string>
-				<string> "cell/center_z" </string>
-				<string> "cell/scale" </string>
-				<string> "data" </string>
 				<string> "DirectionalLight" </string>
 				<string> "transform/local" </string>
 				<string> "layers" </string>
@@ -92,17 +90,6 @@
 				<string> "shadow/max_distance" </string>
 				<string> "shadow/split_weight" </string>
 				<string> "shadow/zoffset_scale" </string>
-				<string> "Camera" </string>
-				<string> "projection" </string>
-				<string> "fov" </string>
-				<string> "near" </string>
-				<string> "far" </string>
-				<string> "keep_aspect" </string>
-				<string> "current" </string>
-				<string> "visible_layers" </string>
-				<string> "environment" </string>
-				<string> "h_offset" </string>
-				<string> "v_offset" </string>
 				<string> "Position3D" </string>
 				<string> "CollisionShape" </string>
 				<string> "shape" </string>
@@ -123,20 +110,62 @@
 				<string> "geometry/baked_light_tex_id" </string>
 				<string> "mesh/mesh" </string>
 				<string> "mesh/skeleton" </string>
+				<string> "Sprite" </string>
+				<string> "visibility/opacity" </string>
+				<string> "visibility/self_opacity" </string>
+				<string> "visibility/light_mask" </string>
+				<string> "transform/pos" </string>
+				<string> "transform/rot" </string>
+				<string> "transform/scale" </string>
+				<string> "z/z" </string>
+				<string> "z/relative" </string>
+				<string> "texture" </string>
+				<string> "centered" </string>
+				<string> "offset" </string>
+				<string> "flip_h" </string>
+				<string> "flip_v" </string>
+				<string> "vframes" </string>
+				<string> "hframes" </string>
+				<string> "frame" </string>
+				<string> "modulate" </string>
+				<string> "region" </string>
+				<string> "region_rect" </string>
 				<string> "SpotLight" </string>
 				<string> "params/radius" </string>
 				<string> "params/attenuation" </string>
 				<string> "params/spot_angle" </string>
 				<string> "params/spot_attenuation" </string>
+				<string> "GridMap" </string>
+				<string> "theme/theme" </string>
+				<string> "theme/bake" </string>
+				<string> "lighting/bake" </string>
+				<string> "cell/size" </string>
+				<string> "cell/octant_size" </string>
+				<string> "cell/center_x" </string>
+				<string> "cell/center_y" </string>
+				<string> "cell/center_z" </string>
+				<string> "cell/scale" </string>
+				<string> "data" </string>
+				<string> "Camera" </string>
+				<string> "projection" </string>
+				<string> "fov" </string>
+				<string> "near" </string>
+				<string> "far" </string>
+				<string> "keep_aspect" </string>
+				<string> "current" </string>
+				<string> "visible_layers" </string>
+				<string> "environment" </string>
+				<string> "h_offset" </string>
+				<string> "v_offset" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 9 </int>
+			<int> 10 </int>
 			<string> "variants" </string>
-			<array  len="37" shared="false">
+			<array  len="43" shared="false">
 				<node_path> "" </node_path>
 				<transform> 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 </transform>
 				<bool> True </bool>
@@ -147,14 +176,16 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 3 </int>
+							<int> 6 </int>
 							<string> "sources" </string>
-							<array  len="5" shared="false">
+							<array  len="7" shared="false">
 								<string> "res://Scripts/MapLoader.gd" </string>
 								<string> "res://Scripts/MeshLoader.gd" </string>
 								<string> "res://Scripts/MapLoader_v2.gd" </string>
 								<string> "res://Scripts/map_test_pathfinding_new_map/main.gd" </string>
 								<node_path> "/root/EditorNode/@Panel3/@VBoxContainer6/@HSplitContainer8/@VSplitContainer9/@VSplitContainer10/@VBoxContainer11/@Panel16/@Control18/@CanvasItemEditor5886/@VSplitContainer5811/@HSplitContainer5812/@Control5813/@Control5814/@Viewport5815/Spatial/Spatial" </node_path>
+								<node_path> "/root/EditorNode/@Panel3/@VBoxContainer6/@HSplitContainer8/@VSplitContainer9/@VSplitContainer10/@VBoxContainer11/@Panel16/@Control18/@CanvasItemEditor5886/@VSplitContainer5811/@HSplitContainer5812/@Control5813/@Control5814/@Viewport5815/Spatial/Camera" </node_path>
+								<node_path> "/root/EditorNode/@Panel3/@VBoxContainer6/@HSplitContainer8/@VSplitContainer9/@VSplitContainer10/@VBoxContainer11/@Panel16/@Control18/@CanvasItemEditor5886/@VSplitContainer5811/@HSplitContainer5812/@Control5813/@Control5814/@Viewport5815/Spatial/Position3D/Sprite" </node_path>
 							</array>
 						</dictionary>
 						<string> "2D" </string>
@@ -196,9 +227,9 @@
 									<string> "distance" </string>
 									<real> 40.250626 </real>
 									<string> "x_rot" </string>
-									<real> 0.545794 </real>
+									<real> 0.183294 </real>
 									<string> "y_rot" </string>
-									<real> -0.899999 </real>
+									<real> -0.099999 </real>
 									<string> "listener" </string>
 									<bool> True </bool>
 									<string> "use_environment" </string>
@@ -286,41 +317,32 @@
 					<string> "Script" </string>
 				</dictionary>
 				<resource  resource_type="Material" path="local://1">  </resource>
-				<resource  resource_type="MeshLibrary" path="res://Map-Cubes.gt">  </resource>
-				<bool> False </bool>
-				<real> 1 </real>
-				<int> 4 </int>
-				<dictionary  shared="false">
-					<string> "cells" </string>
-					<int_array  len="0"> 						 </int_array>
-				</dictionary>
-				<dictionary  shared="false">
-					<string> "_editor_clip_" </string>
-					<int> 0 </int>
-					<string> "_editor_floor_" </string>
-					<vector3> 0, 0, 0 </vector3>
-				</dictionary>
 				<transform> 0.436993, -0.578402, 0.688832, 0, 0.765824, 0.643051, -0.899465, -0.281009, 0.334659, 11.921, 9.96582, 5.66734 </transform>
 				<int> 1 </int>
+				<bool> False </bool>
 				<int> 0 </int>
+				<real> 1 </real>
 				<color> 1, 1, 1, 1 </color>
 				<real> 0 </real>
 				<real> 0.05 </real>
 				<real> 60 </real>
 				<resource name=""></resource>				<real> 0.5 </real>
 				<real> 2 </real>
-				<transform> 0.503941, 0.299983, -0.809974, -0.535268, 0.844442, -0.0202788, 0.677891, 0.443771, 0.586117, -13.1032, -1.9202, -0.579006 </transform>
-				<real> 0.1 </real>
-				<real> 100 </real>
-				<int> 1048575 </int>
 				<transform> 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89463, 8.36917, 4.00625 </transform>
 				<resource  resource_type="Shape" path="local://2">  </resource>
 				<resource  resource_type="Mesh" path="res://new_mesh.res">  </resource>
 				<node_path> ".." </node_path>
+				<vector2> 0, 0 </vector2>
+				<vector2> 1, 1 </vector2>
+				<resource  resource_type="Texture" path="res://icon.png">  </resource>
+				<rect2> 0, 0, 0, 0 </rect2>
+				<resource  resource_type="Script" path="local://3">  </resource>
 				<resource  resource_type="PackedScene" path="res://cone_2.scn">  </resource>
 				<node_path> "." </node_path>
-				<resource  resource_type="Script" path="local://3">  </resource>
+				<resource  resource_type="Script" path="local://4">  </resource>
 				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
@@ -338,10 +360,6 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
-							<string> "fov" </string>
-							<real> 45 </real>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -409,24 +427,28 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
+							<string> "fov" </string>
+							<real> 45 </real>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -442,9 +464,26 @@
 				<transform> 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.39512 </transform>
 				<real> 10.206255 </real>
 				<real> 57.65625 </real>
+				<resource  resource_type="MeshLibrary" path="res://Map-Cubes.gt">  </resource>
+				<int> 4 </int>
+				<dictionary  shared="false">
+					<string> "cells" </string>
+					<int_array  len="0"> 						 </int_array>
+				</dictionary>
+				<dictionary  shared="false">
+					<string> "_editor_clip_" </string>
+					<int> 0 </int>
+					<string> "_editor_floor_" </string>
+					<vector3> 0, 0, 0 </vector3>
+				</dictionary>
+				<transform> 1, 0, 0, 0, 0.973835, 0.227266, 0, -0.227266, 0.973833, -2.61437, 2.10026, 16.8856 </transform>
+				<real> 0.1 </real>
+				<real> 100 </real>
+				<int> 1048575 </int>
+				<resource  resource_type="Script" path="local://5">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="287"> 				-1, -1, 0, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0, 0, 0, 7, 7, -1, 14, 1, 0, 2, 1, 3, 2, 8, 6, 9, 7, 10, 7, 11, 8, 12, 9, 13, 2, 14, 2, 15, 2, 16, 8, 17, 10, 5, 11, 0, 0, 0, 18, 18, -1, 23, 1, 0, 2, 1, 19, 12, 3, 2, 20, 13, 21, 2, 22, 7, 23, 14, 24, 8, 25, 15, 26, 15, 27, 7, 28, 16, 29, 17, 30, 16, 31, 18, 32, 8, 33, 19, 34, 14, 35, 14, 36, 16, 37, 20, 38, 21, 0, 2, 0, 39, 39, -1, 14, 1, 0, 2, 1, 19, 22, 3, 2, 40, 14, 41, 18, 42, 23, 43, 24, 44, 13, 45, 7, 46, 25, 47, 19, 48, 16, 49, 16, 0, 0, 0, 50, 50, -1, 4, 1, 0, 2, 1, 19, 26, 3, 2, 0, 4, 0, 51, 51, -1, 5, 1, 0, 2, 1, 3, 2, 52, 27, 53, 7, 0, 4, 0, 54, 54, -1, 19, 1, 0, 2, 1, 3, 7, 20, 13, 55, 2, 56, 19, 57, 2, 58, 2, 59, 16, 60, 16, 61, 16, 62, 7, 63, 7, 64, 7, 65, 7, 66, 7, 67, 14, 68, 28, 69, 29, 0, 0, 0, 0, 0, 30, 4, 1, 31, 2, 1, 4, 32, 5, 33, 0, 7, 0, 70, 70, -1, 23, 1, 0, 2, 1, 19, 34, 3, 2, 20, 13, 21, 2, 22, 7, 23, 14, 24, 8, 25, 15, 26, 15, 27, 7, 28, 16, 29, 17, 30, 16, 31, 18, 32, 8, 33, 19, 34, 14, 71, 35, 72, 8, 73, 36, 74, 8, 0 </int_array>
+			<int_array  len="340"> 				-1, -1, 0, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0, 0, 0, 7, 7, -1, 23, 1, 0, 2, 1, 8, 6, 3, 2, 9, 7, 10, 2, 11, 8, 12, 9, 13, 10, 14, 11, 15, 11, 16, 8, 17, 12, 18, 13, 19, 12, 20, 14, 21, 10, 22, 15, 23, 9, 24, 9, 25, 12, 26, 16, 27, 17, 0, 0, 0, 28, 28, -1, 4, 1, 0, 2, 1, 8, 18, 3, 2, 0, 2, 0, 29, 29, -1, 5, 1, 0, 2, 1, 3, 2, 30, 19, 31, 8, 0, 2, 0, 32, 32, -1, 19, 1, 0, 2, 1, 3, 8, 9, 7, 33, 2, 34, 15, 35, 2, 36, 2, 37, 12, 38, 12, 39, 12, 40, 8, 41, 8, 42, 8, 43, 8, 44, 8, 45, 9, 46, 20, 47, 21, 0, 2, 0, 48, 48, -1, 22, 1, 0, 3, 2, 49, 10, 50, 10, 51, 7, 52, 22, 53, 12, 54, 23, 55, 9, 56, 2, 57, 24, 58, 2, 59, 22, 60, 8, 61, 8, 62, 7, 63, 7, 64, 9, 65, 11, 66, 8, 67, 25, 4, 26, 0, 0, 0, 0, 0, 27, 4, 1, 28, 2, 1, 4, 29, 5, 30, 0, 6, 0, 68, 68, -1, 23, 1, 0, 2, 1, 8, 31, 3, 2, 9, 7, 10, 2, 11, 8, 12, 9, 13, 10, 14, 11, 15, 11, 16, 8, 17, 12, 18, 13, 19, 12, 20, 14, 21, 10, 22, 15, 23, 9, 69, 32, 70, 10, 71, 33, 72, 10, 0, 0, 0, 73, 73, -1, 14, 1, 0, 2, 1, 3, 2, 74, 34, 75, 2, 76, 8, 77, 10, 78, 35, 79, 2, 80, 2, 81, 2, 82, 10, 83, 36, 5, 37, 0, 0, 0, 84, 84, -1, 15, 1, 0, 2, 1, 8, 38, 3, 2, 85, 9, 86, 14, 87, 39, 88, 40, 89, 7, 90, 8, 91, 41, 92, 15, 93, 12, 94, 12, 4, 42, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

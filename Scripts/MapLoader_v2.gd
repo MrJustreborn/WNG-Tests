@@ -134,7 +134,7 @@ func _initMap(x,y,w,h,type):
 	print("initMap: ",x,"|",y,"|",w,"|",h,"|",type)
 	for i in range(x,w):
 		for j in range(h,y):
-			for z in range(-20,2):
+			for z in range(-1,2):
 				map.set_cell_item(i,j,z,type)
 
 func _addToMap(x,y,data):

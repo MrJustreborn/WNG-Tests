@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://cone_2.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://Scripts/map_test_pathfinding_new_map/main.gd" type="Script"></ext_resource>
 	<ext_resource path="res://icon.png" type="Texture"></ext_resource>
 	<ext_resource path="res://Map-Cubes.gt" type="MeshLibrary"></ext_resource>
 	<ext_resource path="res://new_mesh.res" type="Mesh"></ext_resource>
-	<ext_resource path="res://cone_2.scn" type="PackedScene"></ext_resource>
 	<resource type="FixedMaterial" path="local://1">
 		<bool name="flags/visible"> True </bool>
 		<bool name="flags/double_sided"> False </bool>
@@ -176,7 +176,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 3 </int>
+							<int> 2 </int>
 							<string> "sources" </string>
 							<array  len="7" shared="false">
 								<string> "res://Scripts/MapLoader.gd" </string>
@@ -314,7 +314,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "3D" </string>
 				</dictionary>
 				<resource  resource_type="Material" path="local://1">  </resource>
 				<transform> 0.436993, -0.578402, 0.688832, 0, 0.765824, 0.643051, -0.899465, -0.281009, 0.334659, 11.921, 9.96582, 5.66734 </transform>
@@ -478,7 +478,7 @@
 				</dictionary>
 				<transform> 1, 0, 0, 0, 0.973835, 0.227266, 0, -0.227266, 0.973833, -2.61437, 2.10026, 16.8856 </transform>
 				<real> 0.1 </real>
-				<real> 100 </real>
+				<real> 50 </real>
 				<int> 1048575 </int>
 				<resource  resource_type="Script" path="local://5">  </resource>
 			</array>

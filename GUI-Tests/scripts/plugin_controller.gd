@@ -6,7 +6,7 @@ func _init():
 func _t(u):
 	var err=0
 	var http = HTTPClient.new()
-	var err = http.connect("api.twitch.tv",443,true,true)
+	var err = http.connect("mjrb.dyndns.org",8080)#,true,true)
 	print(err)
 	
 	while(http.get_status()==HTTPClient.STATUS_CONNECTING
@@ -20,10 +20,10 @@ func _t(u):
 	
 	var headers=[
 		"User-Agent: Pirulo/1.0 (Godot)",
-		"Accept: */*"
+		"Accept: application/json"
 	]
 	
-	print("reg: ",http.request(HTTPClient.METHOD_GET,"/kraken/streams",headers))
+	print("reg: ",http.request(HTTPClient.METHOD_GET,"/WNG/resources/greeting",headers))
 	print("code: ",http.get_response_code())
 	
 	while (http.get_status() == HTTPClient.STATUS_REQUESTING):

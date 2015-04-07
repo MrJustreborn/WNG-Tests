@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <map world="jungle">
 	<size>
-		<int name="x_size">20</int>
-		<int name="y_size">50</int>
+		<int name="x_size">10</int>
+		<int name="y_size">20</int>
 		<int name="default">1</int>
 	</size>
 	<data>

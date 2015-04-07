@@ -111,13 +111,16 @@ func _ready():
 	t = Thread.new()
 	t.start(self,"_t")
 	set_process_input(true)
-	t.wait_to_finish()
-	get_node("GridMap").set_bake(true)
+	#t.wait_to_finish()
+	#get_node("GridMap").set_bake(true)
 	#get_node("GridMap").bake_geometry()
 
 func _t(u):
 	mapLoader.setMaterial(material)
-	map = get_node("GridMap")
+	map = GridMap.new()#get_node("GridMap")
+	map.set_name("GridMap")
+	map.set_cell_size(1)
+	map.set_theme(get_node("GridMap").get_theme())
 	var navi = mapLoader.generate_map_xml(map)
 	var p = navi
 	var mesh = mapLoader.generate_navi_mesh(p)
@@ -153,6 +156,7 @@ func _t(u):
 	mapLoader_v2.setMap(map)
 	print(mapLoader_v2.loadMap("res://Maps/test_xml_v2.map"))
 	#AddonTest()
+	get_node("GridMap").replace_by(map)
 
 #****************************************
 #	Addon-Test um ein pck zu validieren

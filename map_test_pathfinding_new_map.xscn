@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://Scripts/map_test_pathfinding_new_map/main.gd" type="Script"></ext_resource>
-	<ext_resource path="res://Map-Cubes.gt" type="MeshLibrary"></ext_resource>
 	<ext_resource path="res://icon.png" type="Texture"></ext_resource>
+	<ext_resource path="res://Map-Cubes.gt" type="MeshLibrary"></ext_resource>
 	<ext_resource path="res://new_mesh.res" type="Mesh"></ext_resource>
 	<ext_resource path="res://cone_2.scn" type="PackedScene"></ext_resource>
 	<resource type="FixedMaterial" path="local://1">
@@ -47,7 +47,7 @@
 
 	</resource>
 	<resource type="GDScript" path="local://3">
-		<string name="script/source"> "&#000a;extends Sprite&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;func _process(delta):&#000a;&#0009;var screen_coord = get_owner().get_node(&quot;Camera&quot;).unproject_position(get_parent().get_translation())&#000a;&#0009;var dist = (get_owner().get_node(&quot;Camera&quot;).get_translation() - get_parent().get_translation()).z&#000a;&#0009;set_pos(screen_coord)&#000a;&#0009;if(dist &gt;=30):&#000a;&#0009;&#0009;if(get_opacity() &lt; 0):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()-0.01)&#000a;&#0009;else:&#000a;&#0009;&#0009;if(get_opacity() &gt; 1):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()+0.01)&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;set_process(true)&#000a;&#0009;set_scale(Vector2(0.25,0.25))&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
+		<string name="script/source"> "&#000a;extends Sprite&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;func _process(delta):&#000a;&#0009;var screen_coord = get_owner().get_node(&quot;Camera&quot;).unproject_position(get_parent().get_translation())&#000a;&#0009;var dist = (get_owner().get_node(&quot;Camera&quot;).get_translation() - get_parent().get_translation()).z&#000a;&#0009;set_pos(screen_coord)&#000a;&#0009;if(dist &gt;=30):&#000a;&#0009;&#0009;if(get_opacity() &lt; 0):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()-0.01)&#000a;&#0009;else:&#000a;&#0009;&#0009;if(get_opacity() &gt; 1):&#000a;&#0009;&#0009;&#0009;set_opacity(get_opacity()+0.01)&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;set_process(true)&#000a;&#0009;set_scale(Vector2(0.5,0.5))&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
 
 	</resource>
 	<resource type="GDScript" path="local://4">
@@ -176,7 +176,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 6 </int>
+							<int> 3 </int>
 							<string> "sources" </string>
 							<array  len="7" shared="false">
 								<string> "res://Scripts/MapLoader.gd" </string>
@@ -360,6 +360,12 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
+							<string> "fov" </string>
+							<real> 45 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -427,12 +433,6 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "zfar" </string>
-							<real> 500 </real>
-							<string> "deflight_rot_y" </string>
-							<real> 0.628319 </real>
-							<string> "fov" </string>
-							<real> 45 </real>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
 							<string> "default_light" </string>

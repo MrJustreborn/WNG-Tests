@@ -6,7 +6,7 @@ func _init():
 func _t(u):
 	var err=0
 	var http = HTTPClient.new()
-	var err = http.connect("mjrb.dyndns.org",8080)#,true,true)
+	var err = http.connect("api.twitch.tv",443,true,false)
 	print(err)
 	
 	while(http.get_status()==HTTPClient.STATUS_CONNECTING
@@ -23,7 +23,7 @@ func _t(u):
 		"Accept: application/json"
 	]
 	
-	print("reg: ",http.request(HTTPClient.METHOD_GET,"/WNG/resources/greeting",headers))
+	print("reg: ",http.request(HTTPClient.METHOD_GET,"/kraken/",headers))
 	print("code: ",http.get_response_code())
 	
 	while (http.get_status() == HTTPClient.STATUS_REQUESTING):

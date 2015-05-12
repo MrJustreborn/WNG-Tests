@@ -106,6 +106,7 @@ func _input(ev):
 var t
 var MapLoader_class = load("res://Scripts/MapLoader.gd")
 var mapLoader = MapLoader_class.new()
+var cave = load("res://cave_test.scn")
 func _ready():
 	# Initalization here
 	t = Thread.new()
@@ -157,6 +158,9 @@ func _t(u):
 	print(mapLoader_v2.loadMap("res://Maps/test_xml_v2.map"))
 	#AddonTest()
 	get_node("GridMap").replace_by(map)
+	var instance = cave.instance()
+	instance.set_translation(Vector3(10.5,-0.5,1.5))
+	map.add_child(instance)
 
 #****************************************
 #	Addon-Test um ein pck zu validieren

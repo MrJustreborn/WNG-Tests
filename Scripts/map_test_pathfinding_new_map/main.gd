@@ -161,6 +161,9 @@ func _t(u):
 	var instance = cave.instance()
 	instance.set_translation(Vector3(10.5,-0.5,1.5))
 	map.add_child(instance)
+	var instance = cave.instance()
+	instance.set_translation(Vector3(10.5+5,-0.5,1.5))
+	map.add_child(instance)
 
 #****************************************
 #	Addon-Test um ein pck zu validieren

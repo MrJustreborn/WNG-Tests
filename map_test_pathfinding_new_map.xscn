@@ -299,11 +299,12 @@
 							<string> "current" </string>
 							<int> 3 </int>
 							<string> "sources" </string>
-							<array  len="4" shared="false">
+							<array  len="5" shared="false">
 								<string> "res://Scripts/MapLoader.gd" </string>
 								<string> "res://Scripts/MeshLoader.gd" </string>
 								<string> "res://Scripts/MapLoader_v2.gd" </string>
 								<string> "res://Scripts/map_test_pathfinding_new_map/main.gd" </string>
+								<node_path> "/root/EditorNode/@Panel4/@VBoxContainer7/@HSplitContainer9/@VSplitContainer10/@VSplitContainer11/@VBoxContainer12/@Panel17/@Control19/@CanvasItemEditor5885/@VSplitContainer5810/@HSplitContainer5811/@Control5812/@Control5813/@Viewport5814/Spatial/Position3D/Sprite" </node_path>
 							</array>
 						</dictionary>
 					</dictionary>

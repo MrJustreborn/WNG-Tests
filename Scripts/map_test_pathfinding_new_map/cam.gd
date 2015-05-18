@@ -27,11 +27,11 @@ func _process(delta):
 
 func _input(event):
 	var pos = get_translation()
+	#print(get_parent().get_name()," -> ",get_viewport().get_mouse_pos())
 	if (Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN)):
 		pos = pos + Vector3(0,0,9) * 0.02;
 		set_translation(pos)
 	elif (Input.is_mouse_button_pressed(BUTTON_WHEEL_UP)):
 		pos = pos + Vector3(0,0,-9) * 0.02;
 		set_translation(pos)
-
 

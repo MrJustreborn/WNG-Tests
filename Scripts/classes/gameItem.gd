@@ -15,5 +15,8 @@ func setName(_name):
 func getName():
 	return name
 
+func printName():
+	print(name)
+
 func getData():
 	return data

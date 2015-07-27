@@ -2,7 +2,7 @@
 <resource_file type="PackedScene" subresource_count="3" version="1.1" version_name="Godot Engine v1.1.stable.custom_build">
 	<ext_resource path="res://icon.png" type="Texture"></ext_resource>
 	<resource type="GDScript" path="local://1">
-		<string name="script/source"> "&#000a;extends Control&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;var script = load(&quot;res://Scripts/classes/gameItem_Item.gd&quot;)&#000a;&#0009;get_node(&quot;Sprite&quot;).set_script(script)&#000a;&#0009;get_node(&quot;Sprite&quot;).call(&quot;setName&quot;,&quot;Peter&quot;)&#000a;&#0009;get_node(&quot;Sprite1&quot;).set_script(script)&#000a;&#0009;get_node(&quot;Sprite1&quot;).call(&quot;setName&quot;,&quot;Peter2&quot;)&#000a;&#0009;set_process(true)&#000a;&#0009;pass&#000a;&#000a;func _process(delta):&#000a;&#0009;#print(get_node(&quot;Sprite&quot;).call(&quot;getName&quot;))&#000a;&#0009;print(get_node(&quot;Sprite1&quot;).call(&quot;getData&quot;))&#000a;" </string>
+		<string name="script/source"> "&#000a;extends Control&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;func _ready():&#000a;&#0009;# Initialization here&#000a;&#0009;var script = load(&quot;res://Scripts/classes/gameItem_Item_XYZ.gd&quot;)&#000a;&#0009;get_node(&quot;Sprite&quot;).set_script(script)&#000a;&#0009;get_node(&quot;Sprite&quot;).call(&quot;setName&quot;,&quot;Peter&quot;)&#000a;&#0009;get_node(&quot;Sprite1&quot;).set_script(script)&#000a;&#0009;get_node(&quot;Sprite1&quot;).call(&quot;setName&quot;,&quot;Peter2&quot;)&#000a;&#0009;set_process(true)&#000a;&#0009;pass&#000a;&#000a;func _process(delta):&#000a;&#0009;#print(get_node(&quot;Sprite&quot;).call(&quot;getName&quot;))&#000a;&#0009;print(get_node(&quot;Sprite1&quot;).call(&quot;getData&quot;))&#000a;" </string>
 
 	</resource>
 	<main_resource>
@@ -190,12 +190,13 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 1 </int>
+							<int> 3 </int>
 							<string> "sources" </string>
-							<array  len="3" shared="false">
+							<array  len="4" shared="false">
 								<string> "res://Scripts/classes/gameItem.gd" </string>
 								<string> "res://Scripts/classes/gameItem_Item.gd" </string>
 								<node_path> "/root/EditorNode/@Panel4/@VBoxContainer7/@HSplitContainer9/@VSplitContainer10/@VSplitContainer11/@VBoxContainer12/@Panel17/@Control19/@CanvasItemEditor5885/@VSplitContainer5810/@HSplitContainer5811/@Control5812/@Control5813/@Viewport5814/Control" </node_path>
+								<string> "res://Scripts/classes/gameItem_Item_XYZ.gd" </string>
 							</array>
 						</dictionary>
 					</dictionary>

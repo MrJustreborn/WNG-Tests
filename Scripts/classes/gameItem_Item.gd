@@ -6,3 +6,4 @@ func _init():
 		type = "sdfs",
 		test = 311
 	}
+

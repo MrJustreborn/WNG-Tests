@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="2" version="1.1" version_name="Godot Engine v1.1.stable.custom_build">
-	<ext_resource path="res://Scripts/load_screen.gd" type="Script"></ext_resource>
+<resource_file type="PackedScene" subresource_count="2" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<resource type="GDScript" path="local://1">
+		<string name="script/source"> "&#000a;extends Control&#000a;&#000a;# member variables here, example:&#000a;# var a=2&#000a;# var b=&quot;textvar&quot;&#000a;&#000a;var map&#000a;var tileset&#000a;var tex&#000a;&#000a;func _ready():&#000a;&#0009;tileset = TileSet.new()&#000a;&#0009;tex = load(&quot;res://icon.png&quot;)&#000a;&#0009;get_node(&quot;Sprite&quot;).set_texture(tex)&#000a;&#0009;for i in range(10):&#000a;&#0009;&#0009;tileset.create_tile(tileset.get_last_unused_tile_id())&#000a;&#0009;&#0009;tileset.tile_set_name(i,&quot;lol &quot;+str(i))&#000a;&#0009;&#0009;tileset.tile_set_texture(i,tex)&#000a;&#0009;&#0009;#tileset.tile_set_region(i,Rect2(0,0,20,20))&#000a;&#0009;&#0009;tileset.tile_set_texture_offset(i, Vector2(0,0))&#000a;&#0009;&#0009;print(tileset.tile_get_texture(i))&#000a;&#0009;print(tileset.get_tiles_ids())&#000a;&#0009;&#000a;&#0009;map = get_node(&quot;TileMap&quot;)&#000a;&#0009;map.set_tileset(tileset)&#000a;&#0009;for x in range(100):&#000a;&#0009;&#0009;for y in range(100):&#000a;&#0009;&#0009;&#0009;map.set_cell(x,y,5)&#000a;&#0009;map.update()&#000a;&#0009;print(map.get_cell(0,1))&#000a;&#0009;print(map.get_tileset())&#000a;&#0009;pass&#000a;&#000a;&#000a;" </string>
+
+	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -8,63 +11,54 @@
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 			<string> "names" </string>
-			<string_array  len="34">
+			<string_array  len="26">
 				<string> "Control" </string>
-				<string> "_import_path" </string>
-				<string> "visibility/visible" </string>
-				<string> "visibility/opacity" </string>
-				<string> "visibility/self_opacity" </string>
-				<string> "visibility/light_mask" </string>
 				<string> "anchor/right" </string>
 				<string> "anchor/bottom" </string>
-				<string> "focus_neighbour/left" </string>
-				<string> "focus_neighbour/top" </string>
-				<string> "focus_neighbour/right" </string>
-				<string> "focus_neighbour/bottom" </string>
 				<string> "focus/ignore_mouse" </string>
 				<string> "focus/stop_mouse" </string>
 				<string> "size_flags/horizontal" </string>
 				<string> "size_flags/vertical" </string>
-				<string> "size_flags/stretch_ratio" </string>
-				<string> "__meta__" </string>
-				<string> "anchor/left" </string>
-				<string> "anchor/top" </string>
-				<string> "margin/left" </string>
-				<string> "margin/top" </string>
-				<string> "margin/right" </string>
-				<string> "margin/bottom" </string>
 				<string> "script/script" </string>
-				<string> "ProgressBar" </string>
-				<string> "range/min" </string>
-				<string> "range/max" </string>
-				<string> "range/step" </string>
-				<string> "range/page" </string>
-				<string> "range/value" </string>
-				<string> "range/exp_edit" </string>
-				<string> "rounded_values" </string>
-				<string> "percent/visible" </string>
+				<string> "__meta__" </string>
+				<string> "TileMap" </string>
+				<string> "mode" </string>
+				<string> "tile_set" </string>
+				<string> "cell/size" </string>
+				<string> "cell/quadrant_size" </string>
+				<string> "cell/custom_transform" </string>
+				<string> "cell/half_offset" </string>
+				<string> "cell/tile_origin" </string>
+				<string> "cell/y_sort" </string>
+				<string> "collision/use_kinematic" </string>
+				<string> "collision/friction" </string>
+				<string> "collision/bounce" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "tile_data" </string>
+				<string> "Sprite" </string>
+				<string> "transform/pos" </string>
 			</string_array>
 			<string> "node_count" </string>
 			<int> 3 </int>
 			<string> "nodes" </string>
-			<int_array  len="157"> 				-1, -1, 0, 0, -1, 17, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 3, 7, 3, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 15, 5, 16, 2, 17, 6, 0, 0, 0, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 18, 7, 19, 7, 6, 7, 7, 7, 20, 8, 21, 9, 22, 10, 23, 11, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 15, 5, 16, 2, 24, 12, 0, 1, 0, 25, 25, -1, 28, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 19, 3, 6, 3, 7, 3, 20, 13, 21, 13, 22, 13, 23, 14, 8, 0, 9, 0, 10, 0, 11, 0, 12, 4, 13, 1, 14, 5, 16, 2, 26, 15, 27, 16, 28, 2, 29, 15, 30, 2, 31, 4, 32, 4, 33, 1, 0 </int_array>
+			<int_array  len="67"> 				-1, -1, 0, 0, -1, 8, 1, 0, 2, 0, 3, 1, 4, 2, 5, 3, 6, 3, 7, 4, 8, 5, 0, 0, 0, 9, 9, -1, 14, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 3, 16, 6, 17, 1, 18, 1, 19, 11, 20, 12, 21, 0, 22, 0, 23, 13, 0, 0, 0, 24, 24, -1, 1, 25, 14, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="17" shared="false">
-				<node_path> "" </node_path>
-				<bool> True </bool>
-				<real> 1 </real>
+			<array  len="15" shared="false">
 				<int> 1 </int>
 				<bool> False </bool>
+				<bool> True </bool>
 				<int> 2 </int>
+				<resource  resource_type="Script" path="local://1">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -714.068, -133.14 </vector2>
+							<vector2> -353.716, -112.174 </vector2>
 							<string> "snap_grid" </string>
 							<bool> False </bool>
 							<string> "snap_offset" </string>
@@ -178,6 +172,11 @@
 							<string> "znear" </string>
 							<real> 0.1 </real>
 						</dictionary>
+						<string> "Anim" </string>
+						<dictionary  shared="false">
+							<string> "visible" </string>
+							<bool> False </bool>
+						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
 					<dictionary  shared="false">
@@ -187,16 +186,14 @@
 						<int> 0 </int>
 					</dictionary>
 				</dictionary>
-				<int> 3 </int>
-				<real> 400 </real>
-				<real> 300 </real>
-				<real> -400 </real>
-				<real> -300 </real>
-				<resource  resource_type="Script" path="res://Scripts/load_screen.gd">  </resource>
-				<real> 50 </real>
-				<real> 30 </real>
+				<int> 0 </int>
+				<resource name=""></resource>				<vector2> 64, 64 </vector2>
+				<int> 16 </int>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<real> 1 </real>
 				<real> 0 </real>
-				<real> 100 </real>
+				<int_array  len="0"> 					 </int_array>
+				<vector2> 523.744, 325.129 </vector2>
 			</array>
 			<string> "version" </string>
 			<int> 1 </int>
